@@ -1,8 +1,9 @@
-# ElderCare
+# ElderCare pasi operare github
 
 **1)Instaleaza git bash.**
 
-**2) Copiezi link-ul repository-ului(https://github.com/orsospatrick/ElderCare.git) apoi deschizi git bash->navighezi unde vrei sa fie pus proiectul->si scrii git clone si pui link-ul repository-ului.**
+**2) Copiezi link-ul repository-ului(https://github.com/orsospatrick/ElderCare.git) apoi deschizi git bash->navighezi unde vrei sa fie pus proiectul->si scrii git clone si pui link-ul repository-ului->
+(git clone https://github.com/orsospatrick/ElderCare.git)**
 
 **3) faci modificari in Visual Code si cand vrei sa sa urci**
 
