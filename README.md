@@ -1,4 +1,7 @@
-# ElderCare pasi operare github
+# ElderCare 
+
+
+#Pasi lucru cu github
 
 **1)Instaleaza git bash.**
 
@@ -12,4 +15,4 @@
           - git commit -m "un mesaj "
           - git push
           
-**4) Sa incercam sa ne facem branch-uri si la sfarsit sa punem pe master.**
+**4) Sa incercam sa ne facem branch-uri si la sfarsit sa punem pe master,sa va uitati cum faceti branch-uri noi.**
