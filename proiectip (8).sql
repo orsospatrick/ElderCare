@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gazdă: 127.0.0.1
--- Timp de generare: mai 29, 2019 la 01:02 AM
+-- Timp de generare: mai 29, 2019 la 09:09 PM
 -- Versiune server: 10.1.38-MariaDB
 -- Versiune PHP: 7.3.3
 
@@ -42,9 +42,11 @@ CREATE TABLE `alarma_detalii` (
 --
 
 INSERT INTO `alarma_detalii` (`id`, `id_pacient`, `detalii_alarma`, `timp_sesizare`, `StatusAlarma`, `dataRezolvare`) VALUES
-(1, 8, 'am reglat temperatura', '2019-05-28 11:01:49', 'Rezolvat', '2019-05-29 00:15:46'),
-(2, 8, 'e prea umed', '2019-05-29 01:17:27', 'Rezolvat', '2019-05-29 00:17:36'),
-(3, 8, 'are pulsu mare', '2019-05-29 01:17:55', 'Rezolvat', '2019-05-29 00:18:09');
+(1, 8, 'am reglat temperatura', '2019-05-28 11:01:49', 'Rezolvat', '2019-05-29 15:04:23'),
+(2, 8, 'e prea umed', '2019-05-29 01:17:27', 'Rezolvat', '2019-05-29 15:04:25'),
+(3, 8, 'are pulsu mare', '2019-05-29 01:17:55', 'Rezolvat', '2019-05-29 15:04:32'),
+(4, 8, 'o uitat geamu deschis', '2019-05-29 10:40:58', 'Rezolvat', '2019-05-29 12:42:15'),
+(5, 8, 'e prea umed', '2019-05-29 10:42:00', 'Rezolvat', '2019-05-29 15:02:26');
 
 -- --------------------------------------------------------
 
@@ -58,6 +60,29 @@ CREATE TABLE `alergii` (
   `tipAlergie` varchar(255) NOT NULL,
   `simptome` varchar(255) NOT NULL,
   `data_adaugarii` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Eliminarea datelor din tabel `alergii`
+--
+
+INSERT INTO `alergii` (`id`, `id_pacient`, `tipAlergie`, `simptome`, `data_adaugarii`) VALUES
+(1, 21, 'a', 'a', '2019-05-29 11:46:16'),
+(2, 21, 't3', 's3', '2019-05-29 11:54:59');
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `chat_medic_pacient`
+--
+
+CREATE TABLE `chat_medic_pacient` (
+  `id` int(11) NOT NULL,
+  `id_pacient` int(11) NOT NULL,
+  `id_medic` int(11) NOT NULL,
+  `mesaj` varchar(255) NOT NULL,
+  `emitator` varchar(255) NOT NULL,
+  `timp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -83,7 +108,15 @@ INSERT INTO `chat_supraveghetor_pacient` (`id`, `id_pacient`, `id_supraveghetor`
 (27, 8, 4, 'asd', 'supraveghetor', '2019-05-28 11:56:56'),
 (28, 8, 4, 'f', 'supraveghetor', '2019-05-28 11:57:00'),
 (29, 8, 4, 's', 'supraveghetor', '2019-05-28 11:57:03'),
-(30, 8, 4, 'asd', 'supraveghetor', '2019-05-28 15:38:32');
+(30, 8, 4, 'asd', 'supraveghetor', '2019-05-28 15:38:32'),
+(31, 8, 4, 'asf', 'supraveghetor', '2019-05-29 10:16:17'),
+(32, 8, 4, 'dsa', 'supraveghetor', '2019-05-29 10:16:22'),
+(33, 9, 22, 'asd', 'supraveghetor', '2019-05-29 12:43:19'),
+(34, 8, 22, 'mesaj', 'supraveghetor', '2019-05-29 12:43:39'),
+(35, 8, 22, 'mesaj', 'supraveghetor', '2019-05-29 18:43:52'),
+(36, 8, 22, 'mesaj2', 'supraveghetor', '2019-05-29 18:44:03'),
+(37, 8, 22, 'mesajpacient', 'pacient', '2019-05-29 18:45:28'),
+(38, 8, 22, 'mesaj2pacient', 'pacient', '2019-05-29 18:46:12');
 
 -- --------------------------------------------------------
 
@@ -412,7 +445,10 @@ CREATE TABLE `ingrijitor_pacient` (
 
 INSERT INTO `ingrijitor_pacient` (`id`, `id_ingrijitor`, `id_pacient`) VALUES
 (1, 16, 8),
-(2, 16, 8);
+(2, 16, 8),
+(3, 16, 9),
+(4, 23, 8),
+(5, 23, 9);
 
 -- --------------------------------------------------------
 
@@ -425,6 +461,15 @@ CREATE TABLE `medic_pacient` (
   `id_medic` int(11) NOT NULL,
   `id_pacient` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Eliminarea datelor din tabel `medic_pacient`
+--
+
+INSERT INTO `medic_pacient` (`id`, `id_medic`, `id_pacient`) VALUES
+(1, 17, 8),
+(2, 17, 18),
+(5, 17, 21);
 
 -- --------------------------------------------------------
 
@@ -447,7 +492,9 @@ CREATE TABLE `pacient_valori_senzori` (
 --
 
 INSERT INTO `pacient_valori_senzori` (`id_pacient`, `min_temperatura`, `max_temperatura`, `min_umiditate`, `max_umiditate`, `min_puls`, `max_puls`) VALUES
-(8, 0, 0, 0, 0, 0, 1);
+(8, 0, 0, 0, 0, 0, 1),
+(18, 0, 40, 10, 70, 35, 200),
+(21, 0, 40, 10, 70, 35, 200);
 
 -- --------------------------------------------------------
 
@@ -472,7 +519,9 @@ CREATE TABLE `parametrifiziologici` (
 
 INSERT INTO `parametrifiziologici` (`id`, `id_pacient`, `Sistolic`, `Diastolic`, `Temperatura`, `Glicemie`, `Greutate`, `dataInregistrarii`) VALUES
 (1, 8, 1, 2, 3, 4, 5, '2019-05-29 00:23:08'),
-(2, 8, 6, 7, 8, 9, 10, '2019-05-29 00:30:17');
+(2, 8, 6, 7, 8, 9, 10, '2019-05-29 00:30:17'),
+(3, 21, 23, 23, 23, 23, 23, '2019-05-29 11:56:34'),
+(4, 8, 2, 3, 4, 5, 6, '2019-05-29 13:06:51');
 
 -- --------------------------------------------------------
 
@@ -494,7 +543,10 @@ CREATE TABLE `schememedicatie` (
 
 INSERT INTO `schememedicatie` (`id`, `id_pacient`, `schemaMedicatie`, `tratament`, `dataInregistrarii`) VALUES
 (5, 1, 'schema', 'tratament', '2019-05-09 13:06:08'),
-(6, 9, 'schema1', 'tratament2', '2019-05-29 01:44:22');
+(6, 9, 'schema1', 'tratament2', '2019-05-29 01:44:22'),
+(7, 21, 'schema', 't', '2019-05-29 11:36:52'),
+(8, 21, '1', '1', '2019-05-29 11:37:45'),
+(9, 8, 'schema', 'tratament', '2019-05-29 18:29:27');
 
 -- --------------------------------------------------------
 
@@ -513,7 +565,9 @@ CREATE TABLE `supraveghetor_pacient` (
 --
 
 INSERT INTO `supraveghetor_pacient` (`id`, `id_supraveghetor`, `id_pacient`) VALUES
-(1, 4, 8);
+(1, 4, 8),
+(2, 22, 8),
+(3, 22, 9);
 
 -- --------------------------------------------------------
 
@@ -546,10 +600,15 @@ INSERT INTO `utilizator` (`id`, `utilizator`, `parola`, `tip`, `nume`, `prenume`
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'administrator', 'admin', 'admin', '1970611160031', '2019-05-08', 'masculin', 'adresa', '076', 'email', '', ''),
 (3, 'medicu', 'medicp', 'medic', 'medicnume', 'medicprenume', 'mediccnp', '2019-05-14', 'feminin', 'adr', '123', 'asd@yahoo.com', '', ''),
 (4, 's1', 's1', 'supraveghetor', 's1n', 's1p', '123', '2019-05-08', 'masculin', 'adrs', '1244', 'supra@yahoo.com', '', ''),
-(8, 'gigel', 's', 'pacient', 's', 's', 's', '2019-05-08', 'masculin', 's', 's', 's', '', ''),
+(8, 'pacient', '09d5f9e9c9c25dbbd44296a779f2219b', 'pacient', 's', 's', 's', '2019-05-08', 'masculin', 's', 's', 's', 's', 's'),
 (9, 'p1', '8287458823facb8ff918dbfabcd22ccb', 'pacient', 'n', 'p', '123', '2019-05-21', 'masculin', 'romania dolj filiasi  bloc k5 ', '123', 'asd@yahoo.com', 'profesie', 'scoala vietii'),
 (14, '1', 'c4ca4238a0b923820dcc509a6f75849b', 'medic', '1', '1', '1', '2019-05-22', '1', '1 1 1  1', '1', '1', '1', '1'),
-(16, 'ingrijitorusername', '8287458823facb8ff918dbfabcd22ccb', 'ingrijitor', 'ingrijitorn', 'ingrijitorp', '321', '2019-05-27', 'Masculin', 'tara judet oras  stradaNumar', '123', 'asd@yahoo.com', 'profesie', 'locMunca');
+(16, 'ingrijitorusername', '8287458823facb8ff918dbfabcd22ccb', 'ingrijitor', 'ingrijitorn', 'ingrijitorp', '321', '2019-05-27', 'Masculin', 'tara judet oras  stradaNumar', '123', 'asd@yahoo.com', 'profesie', 'locMunca'),
+(17, 'medic', '0d20326e6155cae6bb2b510bfc2cc01e', 'medic', 'n', 'p', '123', '2019-05-08', 'Masculin', 'r d o  s', '123', 'asd@yahoo.com', 'p', 'l'),
+(18, 'p', '83878c91171338902e0fe0fb97a8c47a', 'pacient', 'p', 'p', '123', '2019-05-09', 'asd', 'd dd d  d', 'p', 'asd', 'd', 'd'),
+(21, '12', 'c81e728d9d4c2f636f067f89cc14862c', 'pacient', '12', '2', '2', '2019-02-05', '2', '2222', '2', '2', '2', '2'),
+(22, 'supraveghetor', '3125da50e2c25bc13ed3a0ab1303feae', 'supraveghetor', '1', '2', '4', '2019-05-15', '5', '7 8 9  1', '3', '6', '2', '3'),
+(23, 'ingrijitor', 'f1ddc36b40cd542d647526238c4facc5', 'ingrijitor', '1', '2', '4', '2019-05-15', '5', '7 8 9  1', '3', '6', '2', '3');
 
 --
 -- Indexuri pentru tabele eliminate
@@ -566,6 +625,13 @@ ALTER TABLE `alarma_detalii`
 -- Indexuri pentru tabele `alergii`
 --
 ALTER TABLE `alergii`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pacient` (`id_pacient`);
+
+--
+-- Indexuri pentru tabele `chat_medic_pacient`
+--
+ALTER TABLE `chat_medic_pacient`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_pacient` (`id_pacient`);
 
@@ -638,19 +704,25 @@ ALTER TABLE `utilizator`
 -- AUTO_INCREMENT pentru tabele `alarma_detalii`
 --
 ALTER TABLE `alarma_detalii`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pentru tabele `alergii`
 --
 ALTER TABLE `alergii`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pentru tabele `chat_medic_pacient`
+--
+ALTER TABLE `chat_medic_pacient`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pentru tabele `chat_supraveghetor_pacient`
 --
 ALTER TABLE `chat_supraveghetor_pacient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT pentru tabele `dateesp`
@@ -662,37 +734,37 @@ ALTER TABLE `dateesp`
 -- AUTO_INCREMENT pentru tabele `ingrijitor_pacient`
 --
 ALTER TABLE `ingrijitor_pacient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pentru tabele `medic_pacient`
 --
 ALTER TABLE `medic_pacient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pentru tabele `parametrifiziologici`
 --
 ALTER TABLE `parametrifiziologici`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pentru tabele `schememedicatie`
 --
 ALTER TABLE `schememedicatie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pentru tabele `supraveghetor_pacient`
 --
 ALTER TABLE `supraveghetor_pacient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pentru tabele `utilizator`
 --
 ALTER TABLE `utilizator`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constrângeri pentru tabele eliminate
@@ -709,6 +781,12 @@ ALTER TABLE `alarma_detalii`
 --
 ALTER TABLE `alergii`
   ADD CONSTRAINT `alergii_ibfk_1` FOREIGN KEY (`id_pacient`) REFERENCES `utilizator` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constrângeri pentru tabele `chat_medic_pacient`
+--
+ALTER TABLE `chat_medic_pacient`
+  ADD CONSTRAINT `chat_medic_pacient_ibfk_1` FOREIGN KEY (`id_pacient`) REFERENCES `utilizator` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constrângeri pentru tabele `chat_supraveghetor_pacient`
