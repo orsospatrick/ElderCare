@@ -13,7 +13,7 @@ $page = $page . "?id_click=" . $id . "&id_supraveghetor=" . $id_supraveghetor . 
 if (isset($_GET["modal"]))
 	$sec = "3000";
 else
-	$sec = "20	";
+	$sec = "3";
 ?>
 <script>
 	window.onload = function() {
