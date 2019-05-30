@@ -1,6 +1,7 @@
 <?php
 $con = mysqli_connect("35.238.19.69", "root", "", "proiectip");
 $id_pacient=$_GET['id_pacient'];
+$id_medic = $_GET["id_medic"];
 if(isset($_GET['detalii_temperatura']))
 {
     $detalii_temperatura=$_GET['detalii_temperatura'];
@@ -19,5 +20,5 @@ VALUES ('$id_pacient','$detalii_alarma')";
         echo "failed";
     }
 }
-header("location:homeadmin.php");
+header("location:homeadmin.php?id_medic=" . $id_medic);
 ?>

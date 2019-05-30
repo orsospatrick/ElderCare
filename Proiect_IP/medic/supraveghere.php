@@ -5,10 +5,11 @@ $errorGaz = "success";
 $errorUmiditate = "success";
 $errorProximitate = "success";
 $id = $_GET["id_click"];
+$id_medic = $_GET["id_medic"];
 if (isset($_GET["modal"]))
 	$modal = $_GET["modal"];
 $page = $_SERVER['PHP_SELF'];
-$page = $page . "?id_click=" . $id . "&errorTemperatura=" . $errorTemperatura . "&errorPuls=" . $errorPuls . "&errorGaz=" . $errorGaz . "&errorGaz=" . $errorGaz . "&errorProximitate=" . $errorProximitate;
+$page = $page . "?id_click=" . $id . "&id_medic=" . $id_medic . "&errorTemperatura=" . $errorTemperatura . "&errorPuls=" . $errorPuls . "&errorGaz=" . $errorGaz . "&errorGaz=" . $errorGaz . "&errorProximitate=" . $errorProximitate;
 if (isset($_GET["modal"]))
 	$sec = "3000";
 else
@@ -540,7 +541,8 @@ else
                         <form method="get" action="<?php echo '/Proiect_IP/medic/insert_alarme.php'?>">
                         <input type="textarea rows='4' cols='30'" name="detalii_temperatura" id="detalii_temperatura">
                         
-                        <input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
+						<input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
+						<input type="hidden" name="id_medic" value="<?php echo $_GET['id_medic']?>">
 
                         </div>
                         <?php
@@ -581,6 +583,7 @@ else
                         <input style="margin-left:10px" type="text" name="detalii_temperatura" id="detalii_temperatura">
                         
                         <input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
+						<input type="hidden" name="id_medic" value="<?php echo $_GET['id_medic']?>">
 
                         </div>
                         <?php
@@ -624,6 +627,7 @@ else
                         <input style="margin-left:10px" type="text" name="detalii_temperatura" id="detalii_temperatura">
                         
                         <input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
+						<input type="hidden" name="id_medic" value="<?php echo $_GET['id_medic']?>">
 
                         </div>
                         <?php
@@ -664,6 +668,7 @@ else
                         <input style="margin-left:10px" type="text" name="detalii_temperatura" id="detalii_temperatura">
                         
                         <input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
+						<input type="hidden" name="id_medic" value="<?php echo $_GET['id_medic']?>">
 
                         </div>
                         <?php
@@ -703,6 +708,7 @@ else
                         <input style="margin-left:10px" type="text" name="detalii_temperatura" id="detalii_temperatura">
                         
                         <input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
+						<input type="hidden" name="id_medic" value="<?php echo $_GET['id_medic']?>">
 
                         </div>
                         <?php

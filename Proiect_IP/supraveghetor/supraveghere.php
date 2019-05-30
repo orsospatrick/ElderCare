@@ -538,10 +538,11 @@ else
 						<div style="margin-top:30px">
                         <label for="male">Detalii:</label>
                        
-                        <form method="get" action="<?php echo '/Proiect_IP/medic/insert_alarme.php'?>">
+                        <form method="get" action="<?php echo '/Proiect_IP/supraveghetor/insert_alarme.php?id_supraveghetor=' . $id_supraveghetor?>">
                         <input type="textarea rows='4' cols='30'" name="detalii_temperatura" id="detalii_temperatura">
                         
-                        <input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
+						<input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
+						<input type="hidden" name="id_supraveghetor" value="<?php echo $_GET['id_supraveghetor']?>">
 
                         </div>
                         <?php
@@ -578,10 +579,11 @@ else
 						</div>
                         <div style="margin-top:30px">
                         <label for="male">Detalii:</label>
-                        <form method="get" action="<?php echo '/Proiect_IP/medic/insert_alarme.php'?>">
+                        <form method="get" action="<?php echo '/Proiect_IP/supraveghetor/insert_alarme.php?id_supraveghetor=' . $id_supraveghetor?>">
                         <input style="margin-left:10px" type="text" name="detalii_temperatura" id="detalii_temperatura">
                         
                         <input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
+						<input type="hidden" name="id_supraveghetor" value="<?php echo $_GET['id_supraveghetor']?>">
 
                         </div>
                         <?php
@@ -621,10 +623,11 @@ else
 						</div>
 						<div style="margin-top:30px">
 						<label for="male">Detalii:</label>
-                        <form method="get" action="<?php echo '/Proiect_IP/medic/insert_alarme.php'?>">
+                        <form method="get" action="<?php echo '/Proiect_IP/supraveghetor/insert_alarme.php?id_supraveghetor=' . $id_supraveghetor?>">
                         <input style="margin-left:10px" type="text" name="detalii_temperatura" id="detalii_temperatura">
                         
                         <input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
+						<input type="hidden" name="id_supraveghetor" value="<?php echo $_GET['id_supraveghetor']?>">
 
                         </div>
                         <?php
@@ -661,10 +664,11 @@ else
 						</div>
 						<div style="margin-top:30px">
 						<label for="male">Detalii:</label>
-                        <form method="get" action="<?php echo '/Proiect_IP/medic/insert_alarme.php'?>">
+                        <form method="get" action="<?php echo '/Proiect_IP/supraveghetor/insert_alarme.php?id_supraveghetor=' . $id_supraveghetor?>">
                         <input style="margin-left:10px" type="text" name="detalii_temperatura" id="detalii_temperatura">
                         
                         <input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
+						<input type="hidden" name="id_supraveghetor" value="<?php echo $_GET['id_supraveghetor']?>">
 
                         </div>
                         <?php
@@ -700,11 +704,12 @@ else
 						</div>
 						<div style="margin-top:30px">
 						<label for="male">Detalii:</label>
-                        <form method="get" action="<?php echo '/Proiect_IP/medic/insert_alarme.php'?>">
+                        <form method="get" action="<?php echo '/Proiect_IP/supraveghetor/insert_alarme.php?id_supraveghetor=' . $id_supraveghetor?>">
                         <input style="margin-left:10px" type="text" name="detalii_temperatura" id="detalii_temperatura">
                         
                         <input type="hidden" name="id_pacient" value="<?php echo $_GET['id_click']?>">
-
+						<input type="hidden" name="id_supraveghetor" value="<?php echo $_GET['id_supraveghetor']?>">
+						
                         </div>
                         <?php
                             if(isset($_GET['detalii_temperatura']))

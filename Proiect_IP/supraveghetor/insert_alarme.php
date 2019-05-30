@@ -19,5 +19,5 @@ VALUES ('$id_pacient','$detalii_alarma')";
         echo "failed";
     }
 }
-header("location:homeadmin.php");
+header("location:homeadmin.php?id_supraveghetor=" . $_GET["id_supraveghetor"]);
 ?>

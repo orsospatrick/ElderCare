@@ -31,6 +31,16 @@ while ($row = $result->fetch_assoc()) {
 				</li>
 				<li class="nav-item active">
 					<div>
+						<a class="nav-link" href="/Proiect_IP/pacient/adaugaredatefiziologice.php?id_click=<?php echo $_GET["id_click"] ?>">Adaugare date<span class="sr-only">(current)</span></a>
+					</div>
+				</li>
+				<li class="nav-item active">
+					<div>
+						<a class="nav-link" href="/Proiect_IP/pacient/vizualizaredatefiziologice.php?id_click=<?php echo $_GET["id_click"] ?>">Istoric date<span class="sr-only">(current)</span></a>
+					</div>
+				</li>
+				<li class="nav-item active">
+					<div>
 						<a class="nav-link" href="/Proiect_IP/pacient/vizualizareScheme.php?id_click=<?php echo $_GET["id_click"] ?>">Scheme de medicatie<span class="sr-only">(current)</span></a>
 					</div>
 				</li>
